@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.management.domain.AcademicLecture">
+	<insert id="add" parameterType="AcademicLecture">
+		insert into academicLecture(
+		lectureName, subordinateUnit, teachingAndResearchSection, lectureType,
+		lectureDate, lectureLevel, lectureAssignment, speaker, speakerUnit,
+		keynoteHolder, titleOfSpeaker, venue, auditStatus,
+		attendanceAtLectures, relatedDisciplines, lectureObjects, emcee,
+		distinguishedGuest, moderatorResume, viewSummary)values(
+		#{lectureName}, #{subordinateUnit}, #{teachingAndResearchSection},
+		#{lectureType}, #{lectureDate}, #{lectureLevel}, #{lectureAssignment},
+		#{speaker}, #{speakerUnit}, #{keynoteHolder}, #{titleOfSpeaker},
+		#{venue}, #{auditStatus}, #{attendanceAtLectures},
+		#{relatedDisciplines}, #{lectureObjects}, #{emcee},
+		#{distinguishedGuest}, #{moderatorResume}, #{viewSummary})
+	</insert>
+
+	<update id="update" parameterType="AcademicLecture">
+		update academicLecture set
+		lectureName=#{lectureName}, subordinateUnit=#{subordinateUnit},
+		teachingAndResearchSection=#{teachingAndResearchSection},
+		lectureType=#{lectureType}, lectureDate=#{lectureDate},
+		lectureLevel=#{lectureLevel}, lectureAssignment=#{lectureAssignment},
+		speaker=#{speaker}, speakerUnit=#{speakerUnit},
+		keynoteHolder=#{keynoteHolder}, titleOfSpeaker=#{titleOfSpeaker},
+		venue=#{venue}, auditStatus=#{auditStatus},
+		attendanceAtLectures=#{attendanceAtLectures},
+		relatedDisciplines=#{relatedDisciplines},
+		lectureObjects=#{lectureObjects}, emcee=#{emcee},
+		distinguishedGuest=#{distinguishedGuest},
+		moderatorResume=#{moderatorResume}, viewSummary=#{viewSummary}
+
+		where id
+		= #{id}
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		delete from academicLecture
+		where
+		id =
+		#{id}
+	</delete>
+
+	<select id="load" parameterType="int" resultType="AcademicLecture">
+		select * from
+		academicLecture where id = #{id}
+	</select>
+
+	<select id="loadByName" parameterType="String" resultType="AcademicLecture">
+		select * from academicLecture where lectureName = #{lectureName}
+	</select>
+
+	<select id="find" parameterType="Map" resultType="AcademicLecture">
+		select * from academicLecture
+		<where>
+
+			<if test="lectureName != null and lectureName != '%%'">
+				(lectureName like #{lectureName})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if
+				test="teachingAndResearchSection != null and teachingAndResearchSection != ''">
+				(teachingAndResearchSection = #{teachingAndResearchSection})
+			</if>
+			<if test="lectureType != null and lectureType != ''">
+				(lectureType = #{lectureType})
+			</if>
+			<if test="lectureDate != null and lectureDate != ''">
+				(lectureDate = #{lectureDate})
+			</if>
+			<if test="lectureLevel != null and lectureLevel != ''">
+				(lectureLevel = #{lectureLevel})
+			</if>
+			<if test="lectureAssignment != null and lectureAssignment != ''">
+				(lectureAssignment = #{lectureAssignment})
+			</if>
+			<if test="speaker != null and speaker != ''">
+				(speaker = #{speaker})
+			</if>
+			<if test="speakerUnit != null and speakerUnit != ''">
+				(speakerUnit = #{speakerUnit})
+			</if>
+			<if test="keynoteHolder != null and keynoteHolder != ''">
+				(keynoteHolder = #{keynoteHolder})
+			</if>
+			<if test="titleOfSpeaker != null and titleOfSpeaker != ''">
+				(titleOfSpeaker = #{titleOfSpeaker})
+			</if>
+			<if test="venue != null and venue != ''">
+				(venue = #{venue})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+			<if test="attendanceAtLectures != null and attendanceAtLectures != ''">
+				(attendanceAtLectures = #{attendanceAtLectures})
+			</if>
+			<if test="relatedDisciplines != null and relatedDisciplines != ''">
+				(relatedDisciplines = #{relatedDisciplines})
+			</if>
+			<if test="lectureObjects != null and lectureObjects != ''">
+				(lectureObjects = #{lectureObjects})
+			</if>
+			<if test="emcee != null and emcee != ''">
+				(emcee = #{emcee})
+			</if>
+			<if test="distinguishedGuest != null and distinguishedGuest != ''">
+				(distinguishedGuest = #{distinguishedGuest})
+			</if>
+			<if test="moderatorResume != null and moderatorResume != ''">
+				(moderatorResume = #{moderatorResume})
+			</if>
+			<if test="viewSummary != null and viewSummary != ''">
+				(viewSummary = #{viewSummary})
+			</if>
+
+		</where>
+		limit #{pageOffset}, #{pageSize}
+	</select>
+
+	<select id="find_count" parameterType="Map" resultType="int">
+		select
+		count(*) from academicLecture
+		<where>
+			<if test="lectureName != null and lectureName != '%%'">
+				(lectureName like #{lectureName})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if
+				test="teachingAndResearchSection != null and teachingAndResearchSection != ''">
+				(teachingAndResearchSection = #{teachingAndResearchSection})
+			</if>
+			<if test="lectureType != null and lectureType != ''">
+				(lectureType = #{lectureType})
+			</if>
+			<if test="lectureDate != null and lectureDate != ''">
+				(lectureDate = #{lectureDate})
+			</if>
+			<if test="lectureLevel != null and lectureLevel != ''">
+				(lectureLevel = #{lectureLevel})
+			</if>
+			<if test="lectureAssignment != null and lectureAssignment != ''">
+				(lectureAssignment = #{lectureAssignment})
+			</if>
+			<if test="speaker != null and speaker != ''">
+				(speaker = #{speaker})
+			</if>
+			<if test="speakerUnit != null and speakerUnit != ''">
+				(speakerUnit = #{speakerUnit})
+			</if>
+			<if test="keynoteHolder != null and keynoteHolder != ''">
+				(keynoteHolder = #{keynoteHolder})
+			</if>
+			<if test="titleOfSpeaker != null and titleOfSpeaker != ''">
+				(titleOfSpeaker = #{titleOfSpeaker})
+			</if>
+			<if test="venue != null and venue != ''">
+				(venue = #{venue})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+			<if test="attendanceAtLectures != null and attendanceAtLectures != ''">
+				(attendanceAtLectures = #{attendanceAtLectures})
+			</if>
+			<if test="relatedDisciplines != null and relatedDisciplines != ''">
+				(relatedDisciplines = #{relatedDisciplines})
+			</if>
+			<if test="lectureObjects != null and lectureObjects != ''">
+				(lectureObjects = #{lectureObjects})
+			</if>
+			<if test="emcee != null and emcee != ''">
+				(emcee = #{emcee})
+			</if>
+			<if test="distinguishedGuest != null and distinguishedGuest != ''">
+				(distinguishedGuest = #{distinguishedGuest})
+			</if>
+			<if test="moderatorResume != null and moderatorResume != ''">
+				(moderatorResume = #{moderatorResume})
+			</if>
+			<if test="viewSummary != null and viewSummary != ''">
+				(viewSummary = #{viewSummary})
+			</if>
+
+		</where>
+	</select>
+
+	<select id="list" parameterType="Map" resultType="AcademicLecture">
+		select * from academicLecture
+		<!--order by ${sort} ${order} -->
+	</select>
+</mapper>

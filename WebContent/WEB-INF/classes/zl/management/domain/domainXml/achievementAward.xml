@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.management.domain.AchievementAward">
+	<insert id="add" parameterType="AchievementAward">
+		insert into achievementAward(
+		bonusName, firstFinishType, firstAdult, outcomeName, subordinateUnit,
+		scientificResearchOffice, firstAuthorNumber, winningAuthor,
+		numberOfWinners, issuingAuthority, dateOfAward, awardLevel,
+		awardGrade, totalNumberOfParticipants, unitRanking,
+		awardApprovalnumber, disciplineCategory, firstClassDiscipline,
+		projectSource, formOfAchievement, auditStatus, remarks,
+		rewardCategory)values(#{bonusName}, #{firstFinishType}, #{firstAdult},
+		#{outcomeName}, #{subordinateUnit}, #{scientificResearchOffice},
+		#{firstAuthorNumber}, #{winningAuthor}, #{numberOfWinners},
+		#{issuingAuthority}, #{dateOfAward}, #{awardLevel}, #{awardGrade},
+		#{totalNumberOfParticipants}, #{unitRanking}, #{awardApprovalnumber},
+		#{disciplineCategory}, #{firstClassDiscipline}, #{projectSource},
+		#{formOfAchievement}, #{auditStatus}, #{remarks}, #{rewardCategory})
+	</insert>
+
+	<update id="update" parameterType="AchievementAward">
+		update achievementAward set
+		bonusName=#{bonusName}, firstFinishType=#{firstFinishType},
+		firstAdult=#{firstAdult}, outcomeName=#{outcomeName},
+		subordinateUnit=#{subordinateUnit},
+		scientificResearchOffice=#{scientificResearchOffice},
+		firstAuthorNumber=#{firstAuthorNumber},
+		winningAuthor=#{winningAuthor}, numberOfWinners=#{numberOfWinners},
+		issuingAuthority=#{issuingAuthority}, dateOfAward=#{dateOfAward},
+		awardLevel=#{awardLevel}, awardGrade=#{awardGrade},
+		totalNumberOfParticipants=#{totalNumberOfParticipants},
+		unitRanking=#{unitRanking},
+		awardApprovalnumber=#{awardApprovalnumber},
+		disciplineCategory=#{disciplineCategory},
+		firstClassDiscipline=#{firstClassDiscipline},
+		projectSource=#{projectSource},
+		formOfAchievement=#{formOfAchievement}, auditStatus=#{auditStatus},
+		remarks=#{remarks}, rewardCategory=#{rewardCategory}
+
+		where id
+		= #{id}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from achievementAward
+		where
+		id =
+		#{id}
+	</delete>
+
+	<select id="load" parameterType="int" resultType="AchievementAward">
+		select * from
+		achievementAward where id = #{id}
+	</select>
+
+	<select id="loadByName" parameterType="String" resultType="AchievementAward">
+		select * from achievementAward where bonusName = #{bonusName}
+	</select>
+
+	<select id="find" parameterType="Map" resultType="AchievementAward">
+		select * from achievementAward
+		<where>
+
+			<if test="bonusName != null and bonusName != '%%'">
+				(bonusName like #{bonusName})
+			</if>
+			<if test="firstFinishType != null and firstFinishType != ''">
+				(firstFinishType = #{firstFinishType})
+			</if>
+			<if test="firstAdult != null and firstAdult != ''">
+				(firstAdult = #{firstAdult})
+			</if>
+			<if test="outcomeName != null and outcomeName != '%%'">
+				(outcomeName like #{outcomeName})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if
+				test="scientificResearchOffice != null and scientificResearchOffice != ''">
+				(scientificResearchOffice = #{scientificResearchOffice})
+			</if>
+			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
+				(firstAuthorNumber = #{firstAuthorNumber})
+			</if>
+			<if test="winningAuthor != null and winningAuthor != ''">
+				(winningAuthor = #{winningAuthor})
+			</if>
+			<if test="numberOfWinners != null and numberOfWinners != ''">
+				(numberOfWinners = #{numberOfWinners})
+			</if>
+			<if test="issuingAuthority != null and issuingAuthority != ''">
+				(issuingAuthority = #{issuingAuthority})
+			</if>
+			<if test="dateOfAward != null and dateOfAward != ''">
+				(dateOfAward = #{dateOfAward})
+			</if>
+			<if test="awardLevel != null and awardLevel != ''">
+				(awardLevel = #{awardLevel})
+			</if>
+			<if test="awardGrade != null and awardGrade != ''">
+				(awardGrade = #{awardGrade})
+			</if>
+			<if
+				test="totalNumberOfParticipants != null and totalNumberOfParticipants != ''">
+				(totalNumberOfParticipants = #{totalNumberOfParticipants})
+			</if>
+			<if test="unitRanking != null and unitRanking != ''">
+				(unitRanking = #{unitRanking})
+			</if>
+			<if test="awardApprovalnumber != null and awardApprovalnumber != ''">
+				(awardApprovalnumber = #{awardApprovalnumber})
+			</if>
+			<if test="disciplineCategory != null and disciplineCategory != ''">
+				(disciplineCategory = #{disciplineCategory})
+			</if>
+			<if test="firstClassDiscipline != null and firstClassDiscipline != ''">
+				(firstClassDiscipline = #{firstClassDiscipline})
+			</if>
+			<if test="projectSource != null and projectSource != ''">
+				(projectSource = #{projectSource})
+			</if>
+			<if test="formOfAchievement != null and formOfAchievement != ''">
+				(formOfAchievement = #{formOfAchievement})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+			<if test="remarks != null and remarks != ''">
+				(remarks = #{remarks})
+			</if>
+			<if test="rewardCategory != null and rewardCategory != ''">
+				(rewardCategory = #{rewardCategory})
+			</if>
+		</where>
+		limit #{pageOffset}, #{pageSize}
+	</select>
+
+	<select id="find_count" parameterType="Map" resultType="int">
+		select
+		count(*) from achievementAward
+		<where>
+
+			<if test="bonusName != null and bonusName != '%%'">
+				(bonusName like #{bonusName})
+			</if>
+			<if test="firstFinishType != null and firstFinishType != ''">
+				(firstFinishType = #{firstFinishType})
+			</if>
+			<if test="firstAdult != null and firstAdult != ''">
+				(firstAdult = #{firstAdult})
+			</if>
+			<if test="outcomeName != null and outcomeName != '%%'">
+				(outcomeName like #{outcomeName})
+			</if>
+			<if test="subordinateUnit != null and subordinateUnit != ''">
+				(subordinateUnit = #{subordinateUnit})
+			</if>
+			<if
+				test="scientificResearchOffice != null and scientificResearchOffice != ''">
+				(scientificResearchOffice = #{scientificResearchOffice})
+			</if>
+			<if test="firstAuthorNumber != null and firstAuthorNumber != ''">
+				(firstAuthorNumber = #{firstAuthorNumber})
+			</if>
+			<if test="winningAuthor != null and winningAuthor != ''">
+				(winningAuthor = #{winningAuthor})
+			</if>
+			<if test="numberOfWinners != null and numberOfWinners != ''">
+				(numberOfWinners = #{numberOfWinners})
+			</if>
+			<if test="issuingAuthority != null and issuingAuthority != ''">
+				(issuingAuthority = #{issuingAuthority})
+			</if>
+			<if test="dateOfAward != null and dateOfAward != ''">
+				(dateOfAward = #{dateOfAward})
+			</if>
+			<if test="awardLevel != null and awardLevel != ''">
+				(awardLevel = #{awardLevel})
+			</if>
+			<if test="awardGrade != null and awardGrade != ''">
+				(awardGrade = #{awardGrade})
+			</if>
+			<if
+				test="totalNumberOfParticipants != null and totalNumberOfParticipants != ''">
+				(totalNumberOfParticipants = #{totalNumberOfParticipants})
+			</if>
+			<if test="unitRanking != null and unitRanking != ''">
+				(unitRanking = #{unitRanking})
+			</if>
+			<if test="awardApprovalnumber != null and awardApprovalnumber != ''">
+				(awardApprovalnumber = #{awardApprovalnumber})
+			</if>
+			<if test="disciplineCategory != null and disciplineCategory != ''">
+				(disciplineCategory = #{disciplineCategory})
+			</if>
+			<if test="firstClassDiscipline != null and firstClassDiscipline != ''">
+				(firstClassDiscipline = #{firstClassDiscipline})
+			</if>
+			<if test="projectSource != null and projectSource != ''">
+				(projectSource = #{projectSource})
+			</if>
+			<if test="formOfAchievement != null and formOfAchievement != ''">
+				(formOfAchievement = #{formOfAchievement})
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				(auditStatus = #{auditStatus})
+			</if>
+			<if test="remarks != null and remarks != ''">
+				(remarks = #{remarks})
+			</if>
+			<if test="rewardCategory != null and rewardCategory != ''">
+				(rewardCategory = #{rewardCategory})
+			</if>
+		</where>
+	</select>
+
+	<select id="list" parameterType="Map" resultType="AchievementAward">
+		select * from achievementAward
+		<!--order by ${sort} ${order} -->
+	</select>
+</mapper>

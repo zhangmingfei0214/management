@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="jdbc.properties"></properties>
+	<typeAliases>
+		<package name="zl.management.domain"></package>
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="pooled">
+				<property name="url" value="${url}" />
+				<property name="driver" value="${driver}" />
+				<property name="username" value="${username}" />
+				<property name='password' value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="zl/management/domain/domainXml/user.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/researchers.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/researchersPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/attendMeeting.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/attendMeetingPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/academicLecture.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/academicLecturePath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/meetingHost.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/meetingHostPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/patentResults.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/patentResultsPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/achievementAward.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/achievementAwardPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/achievements.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/achievementsPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/thesis.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/thesisPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/identificationResult.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/identificationResultPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/researchReport.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/researchReportPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/artWork.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/artWorkPath.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/projectApproval.xml"></mapper>
+		<mapper resource="zl/management/domain/domainXml/projectApprovalPath.xml"></mapper>
+		<package name="zl/management/domain/domainXml"/>
+	</mappers>
+</configuration>
